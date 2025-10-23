@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "RESTful API with Node.js, Express, and PostgreSQL",
   "license": "MIT",
-  "author": "",
+  "author": "Callista Dembegiotis",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
