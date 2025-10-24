@@ -24,9 +24,16 @@ const getUser = async (id) => {
   return result.rows[0];
 };
 
-// TO DO: Update a user
+const getUserByEmail = async (email) => {
+  const result = await pool.query(`SELECT * FROM users WHERE email = $1`,[email]);
+  return result.rows[0];
+};
+
+// TO DO: Update a user (used for update password => dehash + rehash)
 
 const deleteUser = async (id) => {
   const result = await pool.query(`DELETE FROM users WHERE id = $1`,[id]);
   return result.rows[0];
 };
+
+module.exports = { createUser, getAllUsers, getUser, getUserByEmail, deleteUser };

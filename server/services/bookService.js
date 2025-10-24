@@ -17,3 +17,5 @@ const addBook = async (title, author) => {
     );
     return result.rows[0];
 }
+
+module.exports = { getAllBooks, getBook, addBook };

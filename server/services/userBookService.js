@@ -32,3 +32,5 @@ const deleteBook = async (user_id, book_id) => {
         [user_id, book_id]);
     return result.rows[0];
 }
+
+module.exports = { getBooks, addBook, updateBook, deleteBook };
