@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const { pool, initDatabase } = require('./database');
 
+const userRoutes = require('./routes/userRoutes'); 
+const bookRoutes = require('./routes/bookRoutes'); 
+
 const app = express();
 const port = 8080;
 
@@ -13,6 +16,10 @@ initDatabase()
   .then(() => console.log('Database initialized'))
   .catch((err) => console.error('Failed to initialize database:', err));
 
+
+app.use('/', userRoutes);
+app.use('/', bookRoutes);
+
 (async () => {
   await initDatabase();
   app.listen(port, () => {
@@ -20,6 +27,4 @@ initDatabase()
   });
 })();
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello from the API!' });
-});
+
