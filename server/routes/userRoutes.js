@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 const { createUser, getAllUsers, getUser, deleteUser, getUserByEmail } = require('../services/userService');
 const { getUserBooks, addUserBook, updateUserBook, deleteUserBook } = require('../services/userBookService');
 // const authenticate = require('server/middleware/authenticate.js');
