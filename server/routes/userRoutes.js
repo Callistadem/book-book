@@ -63,8 +63,9 @@ router.get('/user/:id', async (req, res) => {
 });
 
 
-router.get('/user/book', async (req, res) => {
-  const books = await getUserBooks();
+router.get('/user/:id/book', async (req, res) => {
+  const { id } = req.params;
+  const books = await getUserBooks(id);
   res.json(books);
 });
 
