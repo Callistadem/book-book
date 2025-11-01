@@ -1,23 +1,23 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
-import './App.css'
+
+import Login from './routes/login/login'
+import Register from "./routes/register/register";
+import "./App.css"
 
 const BASE_URL = 'http://localhost:8080'
 
-const apiCall = () => {
-  fetch(BASE_URL)
-    .then(response => response.json())
-    .then(data => { console.log(data) })
-    .catch(error => console.error(error));
-}
+const App = () => {
+  const [userDetails, setUserDetails] = useState(null);
 
-function App() {
   return (
-    <div className="App">
-      <header>
-        <button onClick={apiCall}>Make API Call</button>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App

@@ -1,0 +1,118 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #bd6765 0%, #de9337c8 100%);
+}
+
+.register-content {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.register-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  color: #8B4513;
+}
+
+.register-title {
+  font-size: 2.25rem;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.register-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.12);
+  padding: 2rem;
+}
+
+.register-card-title {
+  font-size: 1.5rem;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  margin-bottom: 1.5rem;
+  color: #5d4037;
+  text-align: center;
+}
+
+.register-form-group {
+  margin-bottom: 1rem;
+}
+
+.register-form-group:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.register-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #6d4c41;
+}
+
+.register-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #d7ccc8;
+  background-color: #faf8f6;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  color: #8B4513;;
+}
+
+.register-input:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+.register-input::placeholder {
+  color: #a1887f;
+}
+
+.register-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: #8B4513;
+  color: white;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-size: 1rem;
+}
+
+.register-button:hover {
+  opacity: 0.9;
+}
+
+.register-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.register-switch-button {
+  font-size: 0.875rem;
+  color: #8B4513;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.register-switch-button:hover {
+  text-decoration: underline;
+}
