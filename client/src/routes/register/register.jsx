@@ -22,7 +22,6 @@ const RegisterPage = () => {
         setLoading(true);
         try {
             const response = await userServices.register(name, email, password);
-            console.log('username: ', name, 'email: ', email, 'password: ', password)
             if (response) {
                 navigate('/library');
             } else {

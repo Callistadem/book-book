@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = ''
+const baseUrl = 'http://localhost:8080';
 
 const getAllBooks = async () => {
     const response = await axios.get(`${baseUrl}/book`) 
