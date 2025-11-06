@@ -113,3 +113,13 @@
 .login-switch-button:hover {
   text-decoration: underline;
 }
+
+.login-error {
+  color: #EA3323; 
+  padding: 1rem 0;
+  display: flex;
+}
+.login-error p {
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
