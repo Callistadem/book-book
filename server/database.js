@@ -30,34 +30,41 @@ const initDatabase = async () => {
       );
     `);
 
-    // Books table
+    // Books table (id is the google books id)
     await pool.query(`
       CREATE TABLE IF NOT EXISTS books (
-        id SERIAL PRIMARY KEY,
-        title VARCHAR(100),
-        author VARCHAR(50),
-        cover_img TEXT
-      );
-    `)
+          id VARCHAR(255) PRIMARY KEY,  
+          title VARCHAR(255) NOT NULL,
+          author VARCHAR(255),
+          cover_url TEXT,
+          description TEXT,
+          published_date VARCHAR(50),
+          page_count INTEGER,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `)
 
-    // Creating ENUM type for book status
-    await pool.query(`
-      DO $$ BEGIN
-        CREATE TYPE book_status AS ENUM ('complete', 'in_progress', 'wishlist');
-      EXCEPTION
-        WHEN duplicate_object THEN null;
-      END $$;
-    `);
+      // Creating ENUM type for book status
+      await pool.query(`
+        DO $$ BEGIN
+          CREATE TYPE book_status AS ENUM ('complete', 'in_progress', 'wishlist');
+        EXCEPTION
+          WHEN duplicate_object THEN null;
+        END $$;
+      `);
 
-    // User Book table (many to many)
-    await pool.query(`
-      CREATE TABLE IF NOT EXISTS user_book (
-        user_id INT REFERENCES users(id),
-        book_id INT REFERENCES books(id),
-        status book_status DEFAULT 'wishlist',
-        PRIMARY KEY(user_id, book_id)
-      );
-    `)
+      // User Book table (many to many)
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS user_book (
+          user_id INT REFERENCES users(id),
+          book_id VARCHAR(255) REFERENCES books(id),
+          status book_status DEFAULT 'wishlist',
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          PRIMARY KEY(user_id, book_id)
+        );
+      `)
 
     // User reading habits table 
     await pool.query(`
