@@ -3,7 +3,6 @@ const baseUrl = 'http://localhost:8080';
 
 const login = async (email, password) => {
     const response = await axios.post(`${baseUrl}/login`, { email, password })
-    // Save token locally
     if (response.data.token) {
         localStorage.setItem('token', response.data.token);
     }
@@ -12,7 +11,6 @@ const login = async (email, password) => {
 
 const register = async (username, email, password) => {
     const response = await axios.post(`${baseUrl}/register`, { username, email, password })
-    // Save token locally
     if (response.data.token) {
         localStorage.setItem('token', response.data.token);
     }

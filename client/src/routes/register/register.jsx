@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './register.css';
 import userServices from "../../services/user";
 
-const RegisterPage = () => {
+const RegisterPage = ({ setUserDetails }) => {
     const navigate = useNavigate();
     
     const handleClick = () => {
@@ -23,6 +23,8 @@ const RegisterPage = () => {
         try {
             const response = await userServices.register(name, email, password);
             if (response) {
+                const userData = await userServices.getUser();
+                setUserDetails(userData);
                 navigate('/library');
             } else {
                 console.log('invalid credentials')

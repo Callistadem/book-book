@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './login.css';
 import userServices from '../../services/user'
 
-const LoginPage = () => {
+const LoginPage = ({ setUserDetails }) => {
     const navigate = useNavigate();
     const handleClick = () => {
         navigate("/register");
@@ -13,6 +13,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [shouldNavigate, setShouldNavigate] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +22,9 @@ const LoginPage = () => {
         try {
             const response = await userServices.login(email, password);
             if (response) {
-                navigate('/library');
+                const userData = await userServices.getUser();
+                setUserDetails(userData);
+                setShouldNavigate(true);
             } else {
                 setError('Invalid credentials');
             }
@@ -31,6 +34,13 @@ const LoginPage = () => {
             setLoading(false);
         }
     }
+
+    // Navigate after state updates
+    useEffect(() => {
+        if (shouldNavigate) {
+            navigate('/library');
+        }
+    }, [shouldNavigate, navigate]);
 
     return (
         <div className="login-container">
